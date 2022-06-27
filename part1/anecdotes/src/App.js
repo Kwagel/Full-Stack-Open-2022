@@ -11,29 +11,31 @@ const App = () => {
         'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
     ]
 
-    const [selected, setSelected] = useState(0)
-    const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
+    const [properties, setProperties] = useState({
+        selected: 0, votes: new Array(anecdotes.length).fill(0)
+    })
+    console.log(properties.votes[properties.selected])
     const randomQuote = () => {
         const randomNum = Math.floor(Math.random() * anecdotes.length)
-        setSelected(randomNum)
+        setProperties({...properties, selected: randomNum})
     }
     const vote = () => {
-        const copy = [...votes]
-        copy[selected] += 1
-        setVotes(copy)
+        const newProperties = {...properties}
+        newProperties.votes[newProperties.selected]++
+        setProperties(newProperties)
     }
 
 
     return (
         <div>
             <Header text='Anecdote of the day'/>
-            <p>{anecdotes[selected]} </p>
-            <p>has {votes[selected]} votes</p>
+            <p>{anecdotes[properties.selected]} </p>
+            <p>has {properties.votes[properties.selected]} votes</p>
             <Button clicked={randomQuote} text='next anecdote'/>
             <Button clicked={vote} text='vote'/>
             <Header text='Anecdote with most votes'/>
-            <MostVotes anecdotes={anecdotes} votes={votes}/>
+            <MostVotes anecdotes={anecdotes} votes={properties.votes}/>
         </div>
     )
 }
