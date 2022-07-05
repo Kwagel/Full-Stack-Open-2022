@@ -1,18 +1,18 @@
 import React from 'react';
-import axios from "axios";
 
-const Country = (countries) => {
-    const country = countries[0].languages
-    console.log(country)
-
+const Country = ({countries}) => {
+    // const country = countries[0].languages
+    // console.log(country)
+    console.log( countries);
     return (
         <div>
-            <h2>name = {countries[0].name.common}</h2>
-            <p>capital {countries[0].capital}<br/>area {countries[0].area}</p>
+            <h2>name = {countries.name.common}</h2>
+            <p>capital {countries.capital}<br/>area {countries.area}</p>
             <h3>languages:</h3>
             <ul>
-                {country.map(lang => <li> {lang} </li>)}
+                {Object.values(countries.languages).map(l => <li> {l}</li>)}
             </ul>
+            <img src={countries.flags.png} alt="flag of country"/>
         </div>
     )
 
