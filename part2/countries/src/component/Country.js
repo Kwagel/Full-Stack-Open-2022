@@ -19,7 +19,7 @@ const Country = ({countries}) => {
         wind = response.wind_speed
         weatherIcon = response.current.weather.icon
     })
-    let iconSrc = "http://openweathermap.org/img/wn/" + {weatherIcon} + "@2x.png"
+    let iconSrc = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"
     return (
         <div>
             <h2>name = {countries.name.common}</h2>
