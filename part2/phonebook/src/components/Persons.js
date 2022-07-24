@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Persons = ({filteredContacts}) => {
+const Persons = ({filteredContacts, confirmDelete}) => {
     return (
         <ul>
-            {filteredContacts.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+            {filteredContacts.map(person => <li key={person.name}>{person.name} {person.number} <button onClick={() => {confirmDelete(person.id)}}>delete </button></li>)}
         </ul>
 
     )
