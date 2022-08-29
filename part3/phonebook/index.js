@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+app.use(cors())
 const morgan = require('morgan')
 app.use(express.json())
 morgan.token('content', function getName(req) {return JSON.stringify(req.body)})
@@ -78,6 +80,6 @@ app.post('/api/persons', (request, response) => {
 })
 
 morgan('dev')
-const PORT = 3001
+const PORT = 3002
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
